@@ -1,5 +1,6 @@
 package com.amdadulbari.krishokiot;
 
+import handlers.ConnectionService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,8 @@ public class KrishokiotApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KrishokiotApplication.class, args);
+        ConnectionService connectionService = new ConnectionService();
+        connectionService.initiateConnections();
     }
 
 }
