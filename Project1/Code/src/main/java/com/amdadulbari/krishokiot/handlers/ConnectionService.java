@@ -1,4 +1,4 @@
-package handlers;
+package com.amdadulbari.krishokiot.handlers;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;

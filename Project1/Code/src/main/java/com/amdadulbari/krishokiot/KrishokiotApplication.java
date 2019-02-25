@@ -1,6 +1,6 @@
 package com.amdadulbari.krishokiot;
 
-import handlers.ConnectionService;
+import com.amdadulbari.krishokiot.handlers.ConnectionService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

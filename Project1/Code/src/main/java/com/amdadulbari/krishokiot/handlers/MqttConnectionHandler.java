@@ -1,4 +1,4 @@
-package handlers;
+package com.amdadulbari.krishokiot.handlers;
 
 import com.amdadulbari.krishokiot.constants.SettingsConstants;
 import org.eclipse.paho.client.mqttv3.*;
