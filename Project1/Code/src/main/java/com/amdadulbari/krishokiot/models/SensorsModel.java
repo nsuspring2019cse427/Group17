@@ -8,6 +8,15 @@ public class SensorsModel {
     private float temp;
     private float humidity;
 
+    public SensorsModel() {
+    }
+
+    public SensorsModel(String deviceID, float temp, float humidity) {
+        this.deviceID = deviceID;
+        this.temp = temp;
+        this.humidity = humidity;
+    }
+
     public String getDeviceID() {
         return deviceID;
     }
@@ -30,5 +39,14 @@ public class SensorsModel {
 
     public void setHumidity(float humidity) {
         this.humidity = humidity;
+    }
+
+    @Override
+    public String toString() {
+        return "SensorsModel{" +
+                "deviceID='" + deviceID + '\'' +
+                ", temp=" + temp +
+                ", humidity=" + humidity +
+                '}';
     }
 }
