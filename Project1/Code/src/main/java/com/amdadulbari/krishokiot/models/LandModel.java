@@ -1,16 +1,23 @@
 package com.amdadulbari.krishokiot.models;
 
 public class LandModel {
-    public int sqft;
+    public double sqft;
     public String landType;
-    public float lat;
-    public float lon;
+    public double lat;
+    public double lon;
 
-    public int getSqft() {
+    public LandModel(double sqft, String landType, double lat, double lon) {
+        this.sqft = sqft;
+        this.landType = landType;
+        this.lat = lat;
+        this.lon = lon;
+    }
+
+    public double getSqft() {
         return sqft;
     }
 
-    public void setSqft(int sqft) {
+    public void setSqft(double sqft) {
         this.sqft = sqft;
     }
 
@@ -22,19 +29,29 @@ public class LandModel {
         this.landType = landType;
     }
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public float getLon() {
+    public double getLon() {
         return lon;
     }
 
-    public void setLon(float lon) {
+    public void setLon(double lon) {
         this.lon = lon;
+    }
+
+    @Override
+    public String toString() {
+        return "LandModel{" +
+                "sqft=" + sqft +
+                ", landType='" + landType + '\'' +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                '}';
     }
 }
