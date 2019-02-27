@@ -1,16 +1,36 @@
 package com.amdadulbari.krishokiot.models;
 
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Repository
 public class LandModel {
     public double sqft;
     public String landType;
     public double lat;
     public double lon;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     public LandModel(double sqft, String landType, double lat, double lon) {
         this.sqft = sqft;
         this.landType = landType;
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getSqft() {
