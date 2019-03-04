@@ -40,4 +40,10 @@ public class SensorDaoTest {
         boolean result = sensorDao.save(sensorsModel);
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    public void find() {
+        SensorsModel actualModel = sensorDao.find(this.sensorsModel.getDeviceID());
+        assertEquals(sensorsModel,actualModel);
+    }
 }

@@ -20,4 +20,9 @@ public class SensorDao {
         }
     }
 
+    public SensorsModel find(String deviceId) {
+
+        return new SensorsModel();
+    }
+
 }
