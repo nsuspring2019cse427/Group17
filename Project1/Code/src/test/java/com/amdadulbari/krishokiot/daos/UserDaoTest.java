@@ -15,12 +15,17 @@ import static org.junit.Assume.assumeThat;
 public class UserDaoTest {
     @DataPoint
     public static String name = "imad";
+    @DataPoint
+    public static String[] usernames = {"imad", "amdadul", "bari"};
+
     UserDao userDao = new UserDao();
+
 
     @DataPoints
     public static String[] names() {
         return new String[]{"qwerty", "MyPassword", "NSUCSEPASS", "1234567890", null};
     }
+
 
     @Theory
     public void isValid(String firstPart, String secondPart) throws Exception {
@@ -31,5 +36,6 @@ public class UserDaoTest {
         boolean actual = userDao.isValid(firstPart, secondPart);
         assertEquals(true, actual);
     }
+
 
 }
