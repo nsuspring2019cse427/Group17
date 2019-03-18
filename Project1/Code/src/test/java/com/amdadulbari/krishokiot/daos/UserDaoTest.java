@@ -23,8 +23,7 @@ public class UserDaoTest {
 
     @DataPoints
     public static String[] names() {
-        return new String[]{"qwerty", "MyPassword", "NSUCSEPASS", "1234567890", null,"jgh","ftdtdt"};
-
+        return new String[]{"qwerty", "MyPassword", "NSUCSEPASS", "1234567890", null, "jgh", "cancer", "misty", "rationalism", "cseisok", "mostlikely", "bonusmarks"};
     }
 
 

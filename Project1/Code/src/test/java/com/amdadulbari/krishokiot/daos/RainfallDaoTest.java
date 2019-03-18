@@ -26,7 +26,7 @@ public class RainfallDaoTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new RainfallModel(0, 0, 98.34f), true}
+                {new RainfallModel(0, 0, 98.34f), true}, {new RainfallModel(0, 0, 98.34f), true}
         });
     }
 
