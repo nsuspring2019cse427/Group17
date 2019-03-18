@@ -3,9 +3,12 @@ package com.amdadulbari.krishokiot.daos;
 import com.amdadulbari.krishokiot.models.UserModel;
 
 public class UserDao {
-    public boolean save(UserModel userModel) {
+    public UserModel save(UserModel userModel) {
 
-        return true;
+        return userModel;
     }
 
+    public boolean isValid(String userName, String password) {
+        return true;
+    }
 }
