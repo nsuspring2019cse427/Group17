@@ -15,7 +15,7 @@ public class LandController {
             double sqft = payloadObject.getDouble("sqft", 0.0);
             double lat = payloadObject.getDouble("lat", 0.0);
             double lon = payloadObject.getDouble("lon", 0.0);
-            if(sqft<0 || !landType.trim().equals("")){
+            if (sqft < 0 || !landType.trim().equals("")) {
                 return false;
             }
 
@@ -30,4 +30,10 @@ public class LandController {
             return false;
         }
     }
+
+    public String getPreferedCropType(double sqft, double lat, double lon) {
+
+        return "jute";
+    }
+
 }

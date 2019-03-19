@@ -31,7 +31,6 @@ public class SensorDaoTest {
                 {new SensorsModel("IP-03", 100000000000000f, 700000000000000000000000000f), false},
                 {new SensorsModel("IP-04", 20000404000003000f, 6000f), false},
                 {new SensorsModel("IP-05", 10f, 93f), true},
-                {new SensorsModel("IP-06", 100000000000000f, 700000000000000000000000000f), false},
                 {new SensorsModel("IP-07", 0f, 0f), false},
                 {new SensorsModel("IP-08", -1f, 54f), true},
                 {new SensorsModel("IP-09", 110f, 4000f), true},
