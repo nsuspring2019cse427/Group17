@@ -1,5 +1,6 @@
-package com.amdadulbari.krishokiot.daos;
+package com.amdadulbari.krishokiot;
 
+import com.amdadulbari.krishokiot.daos.UserDao;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;

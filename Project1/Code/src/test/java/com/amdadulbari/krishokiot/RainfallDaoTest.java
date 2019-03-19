@@ -1,5 +1,6 @@
-package com.amdadulbari.krishokiot.daos;
+package com.amdadulbari.krishokiot;
 
+import com.amdadulbari.krishokiot.daos.RainfallDao;
 import com.amdadulbari.krishokiot.models.LandModel;
 import com.amdadulbari.krishokiot.models.RainfallModel;
 import org.junit.Before;

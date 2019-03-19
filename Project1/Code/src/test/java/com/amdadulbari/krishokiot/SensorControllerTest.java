@@ -1,6 +1,7 @@
-package com.amdadulbari.krishokiot.controllers;
+package com.amdadulbari.krishokiot;
 
 import com.amdadulbari.krishokiot.constants.SettingsConstants;
+import com.amdadulbari.krishokiot.controllers.SensorController;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

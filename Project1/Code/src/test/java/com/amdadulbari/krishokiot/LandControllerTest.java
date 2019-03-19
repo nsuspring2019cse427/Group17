@@ -1,5 +1,6 @@
-package com.amdadulbari.krishokiot.controllers;
+package com.amdadulbari.krishokiot;
 
+import com.amdadulbari.krishokiot.controllers.LandController;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
