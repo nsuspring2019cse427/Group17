@@ -25,6 +25,9 @@ public class LandModel {
         this.lon = lon;
     }
 
+    public LandModel(){
+
+    }
     public int getId() {
         return id;
     }
