@@ -19,7 +19,7 @@ public class SensorController {
             // TODO Save It to database
             return SettingsConstants.successJson;
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return SettingsConstants.failedJson;
         }
     }
