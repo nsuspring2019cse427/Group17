@@ -49,12 +49,47 @@ public class LandControllerTest {
 
     @Test
     public void saveLandWhenLatInvalid() {
+        String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"sqft\":40.0,\"lon\":60.0}";
+        String payload2 = "{\"landType\":\"crops\",\"lat\":-100,\"sqft\":40.0,\"lon\":60.0}";
+        String payload3 = "{\"landType\":\"crops\",\"lat\":null,\"sqft\":40.0,\"lon\":60.0}";
+        String payload4 = "{\"landType\":\"crops\",\"lat\":\"\",\"sqft\":40.0,\"lon\":60.0}";
+        String payload5 = "{\"landType\":\"crops\",\"lat\":\"55555555555555555555555555555\",\"sqft\":40.0,\"lon\":60.0}";
 
+        assertEquals(false, landController.saveLand(payload));
+        assertEquals(false, landController.saveLand(payload2));
+        assertEquals(false, landController.saveLand(payload3));
+        assertEquals(false, landController.saveLand(payload4));
+        assertEquals(false, landController.saveLand(payload5));
     }
 
     @Test
     public void saveLandWhenLonInvalid() {
+        String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"lon\":40.0,\"sqft\":60.0}";
+        String payload2 = "{\"landType\":\"crops\",\"lat\":-100,\"lon\":40.0,\"sqft\":60.0}";
+        String payload3 = "{\"landType\":\"crops\",\"lat\":null,\"lon\":40.0,\"sqft\":60.0}";
+        String payload4 = "{\"landType\":\"crops\",\"lat\":\"\",\"lon\":40.0,\"sqft\":60.0}";
+        String payload5 = "{\"landType\":\"crops\",\"lat\":\"55555555555555555555555555555\",\"lon\":40.0,\"sqft\":60.0}";
 
+        assertEquals(false, landController.saveLand(payload));
+        assertEquals(false, landController.saveLand(payload2));
+        assertEquals(false, landController.saveLand(payload3));
+        assertEquals(false, landController.saveLand(payload4));
+        assertEquals(false, landController.saveLand(payload5));
+    }
+
+    @Test
+    public void saveLandWhenLanLonInvalid(){
+        String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"lon\":-10.0,\"sqft\":60.0}";
+        String payload2 = "{\"landType\":\"crops\",\"lat\":-100,\"lon\":null,\"sqft\":60.0}";
+        String payload3 = "{\"landType\":\"crops\",\"lat\":null,\"lon\":-100,\"sqft\":60.0}";
+        String payload4 = "{\"landType\":\"crops\",\"sqft\":20.0,\"lat\":\"\",\"lon\":\"\"}";
+        String payload5 = "{\"landType\":\"crops\",\"lat\":\"55555555555555555555555555555\",\"lon\":40.0,\"sqft\":60.0}";
+
+        assertEquals(false, landController.saveLand(payload));
+        assertEquals(false, landController.saveLand(payload2));
+        assertEquals(false, landController.saveLand(payload3));
+        assertEquals(false, landController.saveLand(payload4));
+        assertEquals(false, landController.saveLand(payload5));
     }
 
 }
