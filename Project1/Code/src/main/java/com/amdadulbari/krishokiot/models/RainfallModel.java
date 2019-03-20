@@ -1,7 +1,7 @@
 package com.amdadulbari.krishokiot.models;
 
 public class RainfallModel {
-    private  int id;
+    private int id;
     private int landId;
     private float rainfallMM;
 
@@ -9,6 +9,10 @@ public class RainfallModel {
         this.id = id;
         this.landId = landId;
         this.rainfallMM = rainfallMM;
+    }
+
+    public RainfallModel() {
+
     }
 
     public int getId() {
