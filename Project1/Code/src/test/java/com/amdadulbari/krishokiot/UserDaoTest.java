@@ -1,6 +1,8 @@
 package com.amdadulbari.krishokiot;
 
+import com.amdadulbari.krishokiot.constants.SettingsConstants;
 import com.amdadulbari.krishokiot.daos.UserDao;
+import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -24,7 +26,7 @@ public class UserDaoTest {
 
     @DataPoints
     public static String[] names() {
-        return new String[]{"12345678", "MyPassword","jaaaaaagh", "cancer", "misty", "rationalism", "cseisok", "mostlikely", "bonusmarks"};
+        return new String[]{"12345678", "MyPassword", "jaaaaaagh", "cancer", "misty", "rationalism", "cseisok", "mostlikely", "bonusmarks", "", null};
     }
 
 
@@ -38,6 +40,71 @@ public class UserDaoTest {
         System.out.println(actual);
         assertEquals(true, actual);
     }
+
+    @Test
+    public void saveWhenAllValid() {
+        String payload = "{\"name\":\"imad\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+
+        assertEquals(SettingsConstants.successJson, userDao.save(payload));
+
+    }
+
+    @Test
+    public void saveWhenNameInValid() {
+        String payload = "{\"name\":\"\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload2 = "{\"name\":00,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload3 = "{\"name\":12.2,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload4 = "{\"name\":null,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload5 = "{\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload6 = "{\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload7 = "{\"name\":\"!@###!@!@!@!@!@&*()\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        assertEquals(SettingsConstants.successJson, userDao.save(payload));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload2));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload3));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload4));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload5));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload6));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload7));
+
+    }
+
+    @Test
+    public void saveWhenPhoneInvalid() {
+        String payload = "{\"phoneNumber\":\"\",\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload2 = "{\"phoneNumber\":00,\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload3 = "{\"phoneNumber\":12.2,\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload4 = "{\"phoneNumber\":null,\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload5 = "{\"phoneNumber\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload6 = "{\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload7 = "{\"phoneNumber\":\"!@###!@!@!@!@!@&*()\",\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        assertEquals(SettingsConstants.successJson, userDao.save(payload));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload2));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload3));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload4));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload5));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload6));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload7));
+    }
+
+    @Test
+    public void saveWhenAddressInvalid() {
+        String payload = "{\"name\":\"\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload2 = "{\"name\":00,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload3 = "{\"name\":12.2,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload4 = "{\"name\":null,\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload5 = "{\"name\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload6 = "{\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        String payload7 = "{\"name\":\"!@###!@!@!@!@!@&*()\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
+        assertEquals(SettingsConstants.successJson, userDao.save(payload));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload2));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload3));
+        assertEquals(SettingsConstants.failedJson, userDao.save(payload4));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload5));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload6));
+        assertEquals(SettingsConstants.successJson, userDao.save(payload7));
+    }
+
+
 
 
 }
