@@ -9,12 +9,15 @@ import static org.junit.Assert.assertEquals;
 public class RainfallControllerTest {
     RainfallController rainfallController = new RainfallController();
 
+    /* -- Happy Path  -- */
     @Test
     public void saveWhenAllValid() {
         String payload = "{\"landId\":2,\"rainfallMM\":22.2}";
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload));
     }
 
+
+    /* ---   Tested with invalid Land data      --- */
     @Test
     public void saveWhenLandIdInvalid() {
         String payload = "{\"landId\":\"nsucse427\",\"rainfallMM\":22.2}";
@@ -31,6 +34,8 @@ public class RainfallControllerTest {
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload5));
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload6));
     }
+
+    /* ---   Tested with invalid Rainfall data      --- */
 
     @Test
     public void saveWhenRainfallMMInvalid() {
@@ -49,6 +54,8 @@ public class RainfallControllerTest {
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload6));
     }
 
+    /* ---   Tested with both invalid Land and Rainfall data      --- */
+
     @Test
     public void saveWhenBothInvalid() {
         String payload = "{\"landId\":\"12\",\"rainfallMM\":12}";
@@ -65,6 +72,5 @@ public class RainfallControllerTest {
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload5));
         assertEquals(SettingsConstants.successJson, rainfallController.save(payload6));
     }
-
 
 }

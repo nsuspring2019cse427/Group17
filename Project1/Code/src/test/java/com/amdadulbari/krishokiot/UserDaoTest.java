@@ -16,20 +16,20 @@ import static org.junit.Assume.assumeThat;
 
 @RunWith(Theories.class)
 public class UserDaoTest {
+
+    /* Datapoint for a single Username */
     @DataPoint
     public static String name = "amdadulbariimad";
-    @DataPoint
-    public static String[] usernames = {"imad", "amdadul", "bari"};
 
     UserDao userDao = new UserDao();
 
-
+    /* --- Datapoint for various kind of String password combinition --- */
     @DataPoints
-    public static String[] names() {
+    public static String[] datas() {
         return new String[]{"12345678", "MyPassword", "jaaaaaagh", "cancer", "misty", "rationalism", "cseisok", "mostlikely", "bonusmarks", "", null};
     }
 
-
+    /* --- Validity check of User using datapoints as parameters  --- */
     @Theory
     public void isValid(String firstPart, String secondPart) throws Exception {
         System.out.println(String.format("Testing with %s and %s", firstPart, secondPart));
@@ -41,6 +41,7 @@ public class UserDaoTest {
         assertEquals(true, actual);
     }
 
+    /* -- Happy Path Test --- */
     @Test
     public void saveWhenAllValid() {
         String payload = "{\"name\":\"imad\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
@@ -49,6 +50,7 @@ public class UserDaoTest {
 
     }
 
+    /* --- Tested when only name is invalid --- */
     @Test
     public void saveWhenNameInValid() {
         String payload = "{\"name\":\"\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
@@ -68,6 +70,7 @@ public class UserDaoTest {
 
     }
 
+    /* --- Tested when only Phone is invalid --- */
     @Test
     public void saveWhenPhoneInvalid() {
         String payload = "{\"phoneNumber\":\"\",\"name\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
@@ -86,6 +89,7 @@ public class UserDaoTest {
         assertEquals(SettingsConstants.successJson, userDao.save(payload7));
     }
 
+    /* --- Tested when only Address is invalid --- */
     @Test
     public void saveWhenAddressInvalid() {
         String payload = "{\"name\":\"\",\"phoneNumber\":\"01888880000\",\"address\":\"Bashundhara R/A\",\"password\":\"!@#abc#$%\",\"age\":99}";
@@ -104,6 +108,7 @@ public class UserDaoTest {
         assertEquals(SettingsConstants.successJson, userDao.save(payload7));
     }
 
+    /* --- Tested when only Password is invalid --- */
     @Test
     public void saveWhenPasswordInvalid() {
         String payload = "{\"name\":\"imad\",\"phoneNumber\":\"+8801155441122\",\"address\":\"Mirpur\",\"password\":\"a\",\"age\":100}";
@@ -120,6 +125,7 @@ public class UserDaoTest {
         assertEquals(SettingsConstants.failedJson, userDao.save(payload6));
     }
 
+    /* --- Tested when only Age is invalid --- */
     @Test
     public void saveWhenAgeInvalid() {
         String payload = "{\"name\":\"imad\",\"phoneNumber\":\"+8801155441122\",\"address\":\"Mirpur\",\"password\":\"abcfwe!@#A\",\"age\":-100}";

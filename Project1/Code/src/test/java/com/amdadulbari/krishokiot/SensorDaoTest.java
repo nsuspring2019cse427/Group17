@@ -18,11 +18,13 @@ public class SensorDaoTest {
     private SensorsModel sensorsModel;
     private boolean expectedResult;
 
+    /* Constructor for setting up parameterized collection data and getting from the test methods */
     public SensorDaoTest(SensorsModel sensorsModel, boolean expectedResult) {
         this.sensorsModel = sensorsModel;
         this.expectedResult = expectedResult;
     }
 
+    /* -- Parameterized Collection of different kind of SensorModel which contains different types of inputs/values-- */
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
@@ -45,6 +47,7 @@ public class SensorDaoTest {
         sensorDao = new SensorDao();
     }
 
+    /* checks the save method by using the parameters as input*/
     @Test
     public void save() {
         System.out.println(sensorsModel.toString());
@@ -52,9 +55,10 @@ public class SensorDaoTest {
         assertEquals(expectedResult, result);
     }
 
+    /* checks the find method by using the parameters as input*/
     @Test
     public void find() {
         SensorsModel actualModel = sensorDao.find(this.sensorsModel.getDeviceID());
-        assertEquals(sensorsModel,actualModel);
+        assertEquals(sensorsModel, actualModel);
     }
 }

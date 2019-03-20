@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class LandControllerTest {
     LandController landController = new LandController();
 
+    /* -- Happy Path Test -- */
     @Test
     public void saveLandWhenAllValid() {
         String payload = "{\"landType\":\"crops\",\"sqft\":10.0,\"lat\":40.0,\"lon\":60.0}";
@@ -15,6 +16,7 @@ public class LandControllerTest {
 
     }
 
+    /* -- Test When SquareFeet is not valid -- */
     @Test
     public void saveLandWhenSQFTInvalid() {
         String payload = "{\"landType\":\"crops\",\"sqft\":-10.0,\"lat\":40.0,\"lon\":60.0}";
@@ -31,6 +33,7 @@ public class LandControllerTest {
 
     }
 
+    /* -- Test When LandType is not valid -- */
     @Test
     public void saveLandWhenLandTypeInvalid() {
         String payload1 = "{\"landType\":123,\"sqft\":20.0,\"lat\":40.0,\"lon\":60.0}";
@@ -48,6 +51,7 @@ public class LandControllerTest {
         assertEquals(false, landController.saveLand(payload6));
     }
 
+    /* -- Test When Lat is not valid -- */
     @Test
     public void saveLandWhenLatInvalid() {
         String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"sqft\":40.0,\"lon\":60.0}";
@@ -63,6 +67,7 @@ public class LandControllerTest {
         assertEquals(false, landController.saveLand(payload5));
     }
 
+    /* -- Test When Lon is not valid -- */
     @Test
     public void saveLandWhenLonInvalid() {
         String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"lon\":40.0,\"sqft\":60.0}";
@@ -78,6 +83,7 @@ public class LandControllerTest {
         assertEquals(false, landController.saveLand(payload5));
     }
 
+    /* -- Test When Lat and Lon both are not valid -- */
     @Test
     public void saveLandWhenLanLonInvalid() {
         String payload = "{\"landType\":\"crops\",\"lat\":-10.0,\"lon\":-10.0,\"sqft\":60.0}";
@@ -93,6 +99,8 @@ public class LandControllerTest {
         assertEquals(false, landController.saveLand(payload5));
     }
 
+    /* -- Test When SquareFeet and Lat both are not valid -- */
+
     @Test
     public void saveLandWhenSQFTLatInvalid() {
         String payload = "{\"landType\":\"crops\",\"sqft\":-20.0,\"lat\":\"\",\"lon\":12.22}";
@@ -107,6 +115,8 @@ public class LandControllerTest {
         assertEquals(false, landController.saveLand(payload4));
         assertEquals(false, landController.saveLand(payload5));
     }
+
+    /* -- Test When SquareFeet and Lon both are not valid -- */
 
     @Test
     public void saveLandWhenSQFTLonInvalid() {

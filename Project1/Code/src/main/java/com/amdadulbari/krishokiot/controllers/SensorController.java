@@ -1,11 +1,14 @@
 package com.amdadulbari.krishokiot.controllers;
 
 import com.amdadulbari.krishokiot.constants.SettingsConstants;
+import com.amdadulbari.krishokiot.daos.SensorDao;
 import com.amdadulbari.krishokiot.models.SensorsModel;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 
 public class SensorController {
+    SensorDao sensorDao = new SensorDao();
+
     public String setSensorData(String payload) {
         try {
             JsonObject payloadObject = Json.parse(payload).asObject();
@@ -16,6 +19,7 @@ public class SensorController {
             sensorsModel.setTemp(temp);
             sensorsModel.setHumidity(humidity);
             sensorsModel.setDeviceID(deviceID);
+            sensorDao.save(sensorsModel);
             // TODO Save It to database
             return SettingsConstants.successJson;
         } catch (Exception e) {

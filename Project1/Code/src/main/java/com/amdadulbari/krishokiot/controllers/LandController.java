@@ -24,7 +24,7 @@ public class LandController {
             landModel.setSqft(sqft);
             landModel.setLat(lat);
             landModel.setLon(lon);
-            //landDao.save(landModel);
+            landDao.save(landModel);
             return true;
         } catch (Exception e) {
             return false;

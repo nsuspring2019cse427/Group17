@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class SensorControllerTest {
 
+    /* -- Happy Path Test --- */
     @Test
     public void setSensorDataWhenAllValid() {
         String payload = "{\"temp\":33.2,\"humidity\":44.5}";
@@ -15,6 +16,7 @@ public class SensorControllerTest {
         assertEquals(SettingsConstants.successJson, sensorController.setSensorData(payload));
     }
 
+    /* --- Tested when Temperature value is invalid --- */
     @Test
     public void setSensorDataWhenTempInValid() {
         String payload = "{\"temp\":33.2,\"humidity\":55.32}";
@@ -28,6 +30,8 @@ public class SensorControllerTest {
         assertEquals(SettingsConstants.failedJson, sensorController.setSensorData(payload3));
         assertEquals(SettingsConstants.failedJson, sensorController.setSensorData(payload4));
     }
+
+    /* --- Tested when Humidity value is invalid --- */
 
     @Test
     public void setSensorDataWhenHumidInValid() {
@@ -43,6 +47,8 @@ public class SensorControllerTest {
         assertEquals(SettingsConstants.failedJson, sensorController.setSensorData(payload4));
     }
 
+
+    /* --- Tested when Temperature and Humidity both values are  invalid --- */
     @Test
     public void setSensorDataWhenAllInvalid() {
         String payload1 = "{\"temp\":null,\"humidity\":null}";

@@ -1,7 +1,6 @@
 package com.amdadulbari.krishokiot;
 
 import com.amdadulbari.krishokiot.daos.RainfallDao;
-import com.amdadulbari.krishokiot.models.LandModel;
 import com.amdadulbari.krishokiot.models.RainfallModel;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +18,14 @@ public class RainfallDaoTest {
     private RainfallDao rainfallDao;
     private boolean expectedResult;
 
+    /* -- Constructor to set values from parameterized collection and get from test methods --  */
+
     public RainfallDaoTest(RainfallModel rainfallModel, boolean expectedResult) {
         this.rainfallModel = rainfallModel;
         this.expectedResult = expectedResult;
     }
+
+    /* -- Inputs for parameterized Test -- */
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -46,6 +49,7 @@ public class RainfallDaoTest {
         rainfallDao = new RainfallDao();
     }
 
+    /* -- Getting the inputs from the global rainfallModel and expectedResult which are initialized by constructor -- */
     @Test
     public void save() {
         System.out.println(rainfallModel.toString());

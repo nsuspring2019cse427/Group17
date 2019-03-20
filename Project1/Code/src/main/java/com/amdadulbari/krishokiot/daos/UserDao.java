@@ -6,6 +6,7 @@ import com.amdadulbari.krishokiot.models.UserModel;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class UserDao {
     public String save(String payload) {
@@ -24,11 +25,11 @@ public class UserDao {
                 userModel.setAge(age);
                 userModel.setPhoneNumber(phoneNumber);
                 userModel.setPassword(password);
-            /*Session session = HibernateUtil.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
-            session.save(userModel);
-            transaction.commit();
-            session.close();*/
+                Session session = HibernateUtil.getInstance().getSession();
+                Transaction transaction = session.beginTransaction();
+                session.save(userModel);
+                transaction.commit();
+                session.close();
                 return SettingsConstants.successJson;
             }
 
@@ -41,13 +42,15 @@ public class UserDao {
 
     public boolean isValid(String userName, String password) {
         if (userName != null && !userName.trim().isEmpty()) {
-            //UserModel userModel = find(userName);
-//return userModel.getPassword().equals(password);
-            return password.length() > 7;
+            if (password.length() > 7) {
+                return true;
+            }
+            else{
+                return false;
+            }
         } else {
             return false;
         }
-
     }
 
     public UserModel find(String id) {
