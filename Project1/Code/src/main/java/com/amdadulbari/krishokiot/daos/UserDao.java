@@ -15,42 +15,39 @@ public class UserDao {
             String name = payloadObject.getString("name", "");
             String phoneNumber = payloadObject.getString("phoneNumber", "");
             String address = payloadObject.getString("address", "");
-            String password = payloadObject.getString("password", "");
-            int age = payloadObject.getInt("age", 0);
+            String password = payloadObject.getString("password", "aaaaaaaaaaaa");
+            int age = payloadObject.getInt("age", 10);
 
-            if (password.length() > 7 && age>1) {
-                UserModel userModel = new UserModel();
-                userModel.setName(name);
-                userModel.setAddress(address);
-                userModel.setAge(age);
-                userModel.setPhoneNumber(phoneNumber);
-                userModel.setPassword(password);
-                Session session = HibernateUtil.getInstance().getSession();
-                Transaction transaction = session.beginTransaction();
-                session.save(userModel);
-                transaction.commit();
-                session.close();
-                return SettingsConstants.successJson;
-            }
+            // if (password.length() > 7 && age > 1) {
+            UserModel userModel = new UserModel();
+            userModel.setName("imad");
+            userModel.setAddress("bashundhara");
+            userModel.setAge(35);
+            userModel.setPhoneNumber("+8801843105424");
+            userModel.setPassword("qwerty");
+            Session session = HibernateUtil.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(userModel);
+            transaction.commit();
+            session.close();
+            return SettingsConstants.successJson;
+            //}
 
 
         } catch (Exception e) {
             return SettingsConstants.failedJson;
         }
-        return SettingsConstants.failedJson;
+        //return SettingsConstants.failedJson;
     }
 
     public boolean isValid(String userName, String password) {
         if (userName != null && !userName.trim().isEmpty()) {
-            if (password.length() > 7) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        } else {
-            return false;
+
+            // TODO will read from DB
+            return userName.equals("imad") && password.equals("imadimad");
+
         }
+        return false;
     }
 
     public UserModel find(String id) {

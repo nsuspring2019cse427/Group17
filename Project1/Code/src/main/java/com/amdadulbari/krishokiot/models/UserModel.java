@@ -1,6 +1,15 @@
 package com.amdadulbari.krishokiot.models;
 
+
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Repository
+@Entity
 public class UserModel {
+    @Id
     public String name;
     public int age;
     public String phoneNumber;

@@ -25,4 +25,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.5.3'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.2.0'
+    compile group: 'com.eclipsesource.minimal-json', name: 'minimal-json', version: '0.9.5'
+
+
 }

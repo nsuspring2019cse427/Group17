@@ -5,14 +5,17 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/krishokiot?useSSL=false</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.0.112:3306/krishokiot?useSSL=false</property>
+        <property name="hibernate.connection.username">imad</property>
         <property name="hibernate.connection.password">##imad##</property>
         <property name="hibernate.connection.pool_size">1000</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <mapping class="com.amdadulbari.krishokiot.models.SensorsModel"></mapping>
+        <mapping class="com.amdadulbari.krishokiot.models.UserModel"></mapping>
+        <mapping class="com.amdadulbari.krishokiot.models.RainfallModel"></mapping>
+        <mapping class="com.amdadulbari.krishokiot.models.LandModel"></mapping>
     </session-factory>
 </hibernate-configuration>
