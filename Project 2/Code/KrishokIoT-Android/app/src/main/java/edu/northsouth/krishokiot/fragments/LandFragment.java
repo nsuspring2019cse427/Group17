@@ -7,10 +7,29 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.eclipsesource.json.JsonObject;
+
+import java.io.IOException;
 
 import edu.northsouth.krishokiot.R;
+import edu.northsouth.krishokiot.constants.SettingsConstant;
+import edu.northsouth.krishokiot.networks.RequestPoster;
 
 public class LandFragment extends Fragment {
+    private EditText etLandType;
+    private EditText etSqft;
+    private EditText etLat;
+    private EditText etLon;
+    private Button btnSave;
+
+    private String landType;
+    private double sqft;
+    private double lat;
+    private double lon;
+
 
     @Nullable
     @Override
@@ -21,6 +40,37 @@ public class LandFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        etLandType = view.findViewById(R.id.etLand);
+        etLat = view.findViewById(R.id.et_lat);
+        etLon = view.findViewById(R.id.et_lon);
+        etSqft = view.findViewById(R.id.et_sqft);
+        btnSave = view.findViewById(R.id.btnSave);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                landType = etLandType.getText().toString();
+                sqft = Double.parseDouble(etSqft.getText().toString());
+                lat = Double.parseDouble((etLat.getText().toString()));
+                lon = Double.parseDouble((etLon.getText().toString()));
+
+                JsonObject requestObject = new JsonObject();
+                requestObject.add("landType", landType);
+                requestObject.add("sqft", sqft);
+                requestObject.add("lat", lat);
+                requestObject.add("lon", lon);
+
+                RequestPoster requestPoster = new RequestPoster();
+                try {
+                    System.out.println(requestObject.toString());
+                    String result = requestPoster.post(SettingsConstant.BASE_URL + SettingsConstant.LAND_SAVE_END_POINT, requestObject.toString());
+                    System.out.println(result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     @Override
