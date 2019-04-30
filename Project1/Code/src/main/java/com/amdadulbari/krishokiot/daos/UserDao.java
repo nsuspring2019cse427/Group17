@@ -37,14 +37,14 @@ public class UserDao {
         } catch (Exception e) {
             return SettingsConstants.failedJson;
         }
-        //return SettingsConstants.failedJson;
+        //return SettingsConstants.failedJson;krishokiot
     }
 
     public boolean isValid(String userName, String password) {
         if (userName != null && !userName.trim().isEmpty()) {
 
             // TODO will read from DB
-            return userName.equals("imad") && password.equals("imadimad");
+            return userName.equals("imad") && password.equals("1");
 
         }
         return false;

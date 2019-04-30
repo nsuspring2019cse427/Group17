@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.eclipsesource.json.JsonObject;
 
@@ -64,7 +65,15 @@ public class LandFragment extends Fragment {
                 try {
                     System.out.println(requestObject.toString());
                     String result = requestPoster.post(SettingsConstant.BASE_URL + SettingsConstant.LAND_SAVE_END_POINT, requestObject.toString());
-                    System.out.println(result);
+                    if (result.equals("true")) {
+                        Toast.makeText(getContext(), "Land Saved Successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
+                    etLat.setText("");
+                    etLon.setText("");
+                    etLandType.setText("");
+                    etSqft.setText("");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
