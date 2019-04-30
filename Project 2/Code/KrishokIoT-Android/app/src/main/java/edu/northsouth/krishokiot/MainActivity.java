@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 
 import edu.northsouth.krishokiot.constants.SettingsConstant;
@@ -49,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = etEmail.getText().toString();
                 pass = etPass.getText().toString();
-                etEmail.setText("");
-                etPass.setText("");
+
 
                 JsonObject requestObject = new JsonObject();
                 requestObject.add("email", email);
@@ -65,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
                     boolean isValidUser = resultObject.getBoolean("success", false);
                     if (isValidUser) {
                         Toast.makeText(getApplicationContext(), "Successfully Logged In", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                     } else {
+                        etEmail.setText("");
+                        etPass.setText("");
                         Toast.makeText(getApplicationContext(), "Invalid User/Pass", Toast.LENGTH_SHORT).show();
                     }
                     System.out.println(result);
@@ -76,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
 
     }
