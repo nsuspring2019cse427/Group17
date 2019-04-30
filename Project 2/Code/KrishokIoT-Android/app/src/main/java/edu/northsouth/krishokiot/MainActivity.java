@@ -1,15 +1,19 @@
 package edu.northsouth.krishokiot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPass;
     private Button btnLogin;
+    private TextView etRegister;
 
     private String email;
     private String pass;
@@ -60,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     boolean isValidUser = resultObject.getBoolean("success", false);
                     if (isValidUser) {
                         Toast.makeText(getApplicationContext(), "Successfully Logged In", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid User/Pass", Toast.LENGTH_SHORT).show();
                     }
@@ -69,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
 
     }
 

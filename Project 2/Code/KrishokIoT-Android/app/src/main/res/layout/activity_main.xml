@@ -29,8 +29,9 @@
         android:id="@+id/btnLogin"
         android:layout_below="@id/et_pass"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="120dp"
         android:layout_height="wrap_content"
         android:text="Login" />
+
 
 </RelativeLayout>
